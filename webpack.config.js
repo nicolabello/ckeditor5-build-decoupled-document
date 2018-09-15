@@ -60,7 +60,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.svg$/,
-				use: [ 'null-loader' /*'raw-loader'*/ ]
+				use: [ 'empty-string-loader' /*'raw-loader'*/ ]
 			},
 			{
 				test: /\.css$/,
@@ -80,7 +80,7 @@ module.exports = {
 							minify: true
 						} )
 					},*/
-					'null-loader'
+					'empty-string-loader'
 				]
 			}
 		]
