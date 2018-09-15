@@ -60,12 +60,12 @@ module.exports = {
 		rules: [
 			{
 				test: /\.svg$/,
-				use: [ 'raw-loader' ]
+				use: [ 'null-loader' /*'raw-loader'*/ ]
 			},
 			{
 				test: /\.css$/,
 				use: [
-					{
+					/*{
 						loader: 'style-loader',
 						options: {
 							singleton: true
@@ -79,7 +79,8 @@ module.exports = {
 							},
 							minify: true
 						} )
-					},
+					},*/
+					'null-loader'
 				]
 			}
 		]
