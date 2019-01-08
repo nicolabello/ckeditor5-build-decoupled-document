@@ -1,76 +1,41 @@
-CKEditor 5 document editor build
+CKEditor 5 document editor custom build
 ========================================
 
-[![Join the chat at https://gitter.im/ckeditor/ckeditor5](https://badges.gitter.im/ckeditor/ckeditor5.svg)](https://gitter.im/ckeditor/ckeditor5?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![npm version](https://badge.fury.io/js/%40ckeditor%2Fckeditor5-build-decoupled-document.svg)](https://www.npmjs.com/package/@ckeditor/ckeditor5-build-decoupled-document)
-[![Dependency Status](https://david-dm.org/ckeditor/ckeditor5-build-decoupled-document/status.svg)](https://david-dm.org/ckeditor/ckeditor5-build-decoupled-document)
-[![devDependency Status](https://david-dm.org/ckeditor/ckeditor5-build-decoupled-document/dev-status.svg)](https://david-dm.org/ckeditor/ckeditor5-build-decoupled-document?type=dev)
+This project has been forked from [ckeditor/ckeditor5-build-decoupled-document](https://github.com/ckeditor/ckeditor5-build-decoupled-document) to create a custom build in order to:
 
-The document editor build for CKEditor 5, featuring the decoupled UI editor implementation. Read more about the [document editor build](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#document-editor) and see the [demo](https://ckeditor.com/docs/ckeditor5/latest/examples/builds/document-editor.html).
-
-![CKEditor 5 decoupled document editor build screenshot](https://c.cksource.com/a/1/img/npm/ckeditor5-build-decoupled-document.png)
+* Remove the original styling
+* Customize the list of included plugins
 
 ## Documentation
 
-See:
+Refer to the original [README.md](https://github.com/ckeditor/ckeditor5-build-decoupled-document/blob/master/README.md) for the documentation about **CKEditor 5 document editor build**.
 
-* [Installation](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installation.html) for how to install this package and what it contains.
-* [Basic API](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/basic-api.html) for how to create an editor and interact with it.
-* [Configuration](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/configuration.html) for how to configure the editor.
-* [Creating custom builds](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html) for how to customize the build (configure and rebuild the editor bundle).
+## Modifications
 
-## Quick start
+* _package.json_: added **empty-string-loader** ad dependency
 
-First, install the build from npm:
+* _webpack.config.js_: used **empty-string-loader** as loader for **.css** and **.svg** to remove them from the build
 
-```bash
-npm install --save @ckeditor/ckeditor5-build-decoupled-document
-```
+* _src/ckeditor.js_: customized the list of loaded plugins and set the default toolbar to empty
 
-And use it in your website:
+* _README.md_: this file
 
-```html
-<div id="editor">
-	<p>This is the editor content.</p>
-</div>
-<script src="./node_modules/@ckeditor/ckeditor5-build-decoupled-document/build/ckeditor.js"></script>
-<script>
-	DecoupledEditor
-		.create( '<h2>Hello world!</h2>', {
-			toolbarContainer: document.querySelector( '.toolbar-container' ),
-			editableContainer: document.querySelector( '.editable-container' )
-		} )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
-</script>
-```
+## How to update the build
 
-Or in your JavaScript application:
+Given the following git remotes:
 
-```js
-import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+* _origin_: https://github.com/ckeditor/ckeditor5-build-decoupled-document.git
+* _forked_: https://github.com/nicolabello/ckeditor5-build-decoupled-document.git
 
-// Or using the CommonJS version:
-// const DecoupledEditor = require( '@ckeditor/ckeditor5-build-decoupled-document' );
-
-DecoupledEditor
-	.create( '<h2>Hello world!</h2>', {
-			toolbarContainer: document.querySelector( '.toolbar-container' ),
-			editableContainer: document.querySelector( '.editable-container' )
-		} )
-	.then( editor => {
-		window.editor = editor;
-	} )
-	.catch( err => {
-		console.error( err.stack );
-	} );
-```
-
-**Note:** If you are planning to integrate CKEditor 5 deep into your application, it is actually more convenient and recommended to install and import the source modules directly (like it happens in `ckeditor.js`). Read more in the [Advanced setup guide](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/advanced-setup.html).
+1. Pull from _origin/stable_ 
+2. Merge the conflicts:
+	* accept all _build/*_ changes
+	* _package.json_: keep **empty-string-loader**
+	* _webpack.config.js_: keep **empty-string-loader** as loader for .svg and .css
+	* _src/ckeditor.js_: keep same **active plugins** and **empty toolbar** 
+3. Run _yarn install_
+4. Run _yarn build_
+5. Commit and push to _forked/stable_
 
 ## License
 
