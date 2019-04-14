@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -60,28 +60,11 @@ module.exports = {
 		rules: [
 			{
 				test: /\.svg$/,
-				use: [ 'empty-string-loader' /*'raw-loader'*/ ]
+				use: [ 'empty-string-loader']
 			},
 			{
 				test: /\.css$/,
-				use: [
-					/*{
-						loader: 'style-loader',
-						options: {
-							singleton: true
-						}
-					},
-					{
-						loader: 'postcss-loader',
-						options: styles.getPostCssConfig( {
-							themeImporter: {
-								themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
-							},
-							minify: true
-						} )
-					},*/
-					'empty-string-loader'
-				]
+				use: ['empty-string-loader']
 			}
 		]
 	}
