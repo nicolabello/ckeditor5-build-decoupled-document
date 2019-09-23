@@ -1,7 +1,7 @@
 CKEditor 5 document editor custom build
 ========================================
 
-This project has been forked from [ckeditor/ckeditor5-build-decoupled-document](https://github.com/ckeditor/ckeditor5-build-decoupled-document) to create a custom build in order to:
+Forked from [ckeditor/ckeditor5-build-decoupled-document](https://github.com/ckeditor/ckeditor5-build-decoupled-document) to create a custom build in order to:
 
 * Remove the original styling 
 * Customize the list of included plugins
