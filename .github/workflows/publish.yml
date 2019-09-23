@@ -2,8 +2,8 @@ name: Publish
 
 on:
   pull_request:
-	branches:
-	  - stable
+    branches:
+      - stable
   push:
     branches:
       - stable
@@ -25,5 +25,5 @@ jobs:
         run: yarn build
       - name: Publish
         run: npm publish --access public
-	    env:
-		  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
